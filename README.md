@@ -11,6 +11,18 @@ The task of voice conversion, albeit chosen out of curiosity and for its novelty
 
 We adapt a modified variational autoencoder as proposed in the paper [One-shot VC with IN](https://arxiv.org/abs/1904.05742). The architecutre has two separate encoders: Speaker encoder for encoding the speaker voice style and Content Encoder for encoding the linguistic content in an audio. A single decoder is used with an Adaptive Instance Normalization layer (AdaIN). AdaIN layer is used to provide gloabl information which got normalized in the Content Encoder with Instance Normalization (IN). It realigns channel mean and variance of content features to style features. Mathematically, AdaIn is equivalent to IN of content input 𝑥 which is then normalized to style input 𝑦. The encoder and decoder arhcitectures are as follows:
 
+![Alt text](relative/path/to/img.jpg?raw=true "Title")
+![Alt text](relative/path/to/img.jpg?raw=true "Title")
+
+## Training
+
+The Libri dataset is curated for the voice conversion task, including
+speech recordings of 100 hours of speech from English speakers exhibiting various accents. Each speaker within
+the dataset has multiple audio recordings, each labelled with number that identifies the speaker.
+
+We train our model by using the same audio clip for source, target, and desired output. 
+Training time for our smaller model (with three decoder layers) was as low as 2 hours on a Nvidia T4 GPU, taking 
+approximately 45 thousand epochs.
 
 ## Architecture 1: 
 We notice from the previous demos that the speaker style is not perfectly imposed on the content embeddings from the Content Encoder. In order to boost style element in the output, we experiment with a deeper Decoder network so as to incorporate more AdaIn layers, the primary point of style injection in the network. We test this hypothesis with two networks: a Decoder with 5 layers and a Decoder with 7 layers
