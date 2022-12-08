@@ -13,6 +13,10 @@ target speakers need to be represented inside the training dataset. One-shot voi
 represents one of the most useful and challenging tasks in the VC domain: it requires minimal examples from a target 
 speaker and also poses the least constraints on this example's content.
 
+## Baseline Architecture
+
+We adapt a modified variational autoencoder as proposed in the paper [One-shot VC with IN](https://arxiv.org/abs/1904.05742). The architecutre has two separate encoders: Speaker encoder for encoding the speaker voice style and Content Encoder for encoding the linguistic content in an audio. A sindly decoder is used with an Adaptive Instance Normalization layer. 
+
 ## Training
 
 The Libri dataset is curated for the voice conversion task, including
@@ -26,10 +30,6 @@ approximately 45 thousand epochs.
 
 ## Initial results and demos
 
-
-## Baseline Architecture
-
-We adapt a modified variational autoencoder as proposed in the paper [One-shot VC with IN](https://arxiv.org/abs/1904.05742). The architecutre has two separate encoders: Speaker encoder for encoding the speaker voice style and Content Encoder for encoding the linguistic content in an audio. A sindly decoder is used with an Adaptive Instance Normalization layer. 
 
 - - -
 ### *Male to male(p237->p292)*
