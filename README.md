@@ -97,6 +97,8 @@ Listening to Anery's voice converted to itself, we can hear that our mirror netw
 ### *Anery to James*
 ### <audio src="/demos/decoders/james_to_anery7_1.wav" controls preload></audio>
 
+Overall, this new architecture that we have proposed is functioning similarly to the base architecture that we have used. The performance is not quite as strong, however, we'd love to progress and to train a larger architecture to see how its performance improves with network size.
+
 ## Futurework
 
 1. Use a deeper network and train it for a longer period
