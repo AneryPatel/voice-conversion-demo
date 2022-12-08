@@ -29,7 +29,7 @@ approximately 45 thousand epochs.
 
 We extract the embeddings learnt by the speaker encoder, reduce the dimensionality using t-SNE algorithm and visualise the embedding space learnt for different speakers. We notice that some speaker voices are very distinct than the others. We pick a sample audio from a speaker that has a distinct embedding for the subsequent experiments. 
  
-![alt text](./demos/latents.jpg)
+![alt text](./demos/latents.png)
 
 ## Initial results and demos
 
