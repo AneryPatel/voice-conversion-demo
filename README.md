@@ -27,6 +27,9 @@ approximately 45 thousand epochs.
 ## Initial results and demos
 
 
+## Baseline Architecture
+
+We adapt a modified variational autoencoder as proposed in the paper [One-shot VC with IN](https://arxiv.org/abs/1904.05742). The architecutre has two separate encoders: Speaker encoder for encoding the speaker voice style and Content Encoder for encoding the linguistic content in an audio. A sindly decoder is used with an Adaptive Instance Normalization layer. 
 
 - - -
 ### *Male to male(p237->p292)*
