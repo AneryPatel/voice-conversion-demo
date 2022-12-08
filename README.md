@@ -9,7 +9,11 @@ The task of voice conversion, albeit chosen out of curiosity and for its novelty
 
 ## Baseline Architecture
 
-We adapt a modified variational autoencoder as proposed in the paper [One-shot VC with IN](https://arxiv.org/abs/1904.05742). The architecutre has two separate encoders: Speaker encoder for encoding the speaker voice style and Content Encoder for encoding the linguistic content in an audio. A sindly decoder is used with an Adaptive Instance Normalization layer. 
+We adapt a modified variational autoencoder as proposed in the paper [One-shot VC with IN](https://arxiv.org/abs/1904.05742). The architecutre has two separate encoders: Speaker encoder for encoding the speaker voice style and Content Encoder for encoding the linguistic content in an audio. A single decoder is used with an Adaptive Instance Normalization layer (AdaIN). AdaIN layer is used to provide gloabl information which got normalized in the Content Encoder with Instance Normalization (IN). It realigns channel mean and variance of content features to style features. Mathematically, AdaIn is equivalent to IN of content input 𝑥 is normalized to style input 𝑦. The encoder and decoder arhcitectures are as follows:
+
+
+## Architecture 1: 
+
 
 - - -
 ### *Male to male(p237->p292)*
