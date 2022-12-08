@@ -31,6 +31,39 @@ We extract the embeddings learnt by the speaker encoder, reduce the dimensionali
 
 <img src="./demos/latents.jpg" width=50% height=50%>
 
+## Initial results and demos
+
+With our model trained on the Libri dataset, we can start inference. 
+
+First, let's look at converting some audio clips that come from the authors of this project (Anery and James). Here 
+are two audio clips that we can use.
+
+### *Anery*
+<audio src="/demos/audio/anery_long.wav" controls preload></audio>
+### *James*
+<audio src="/demos/audio/james.wav" controls preload></audio>
+
+And the results, converting between the two of us, are as follows:
+
+### *James to Anery*
+<audio src="/demos/base/james_to_anery.wav" controls preload></audio>
+### *Anery to James*
+<audio src="/demos/base/anery_to_james1.wav" controls preload></audio>
+### *James to James*
+<audio src="/demos/base/james_to_james.wav" controls preload></audio>
+
+Overall these conversions are a great start. But there is room for improvement. Searching for an example that will
+exemplify the best of the model, we search for a target speaker inside the training data. To do this, we look back at
+the latent space of the speaker encoder, in the previous figure. We take an audio clip from the speaker with ID 5163, which
+our t-SNE analysis showed could have a nicely distinct location in the speaker encoder's latent space. 
+
+### *Anery to Speaker 5163*
+<audio src="/demos/base/anery_to_5163.wav" controls preload></audio>
+
+And one more fun example
+### *James to Tuba*
+<audio src="/demos/base/james_to_tuba.wav" controls preload></audio>
+
 ## Architecture 1: 
 We notice from the previous demos that the speaker style is not perfectly imposed on the content embeddings from the Content Encoder. In order to boost style element in the output, we experiment with a deeper Decoder network so as to incorporate more AdaIn layers, the primary point of style injection in the network. We test this hypothesis with two networks: a Decoder with 5 layers and a Decoder with 7 layers
 
