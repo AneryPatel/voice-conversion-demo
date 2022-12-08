@@ -9,10 +9,10 @@ The task of voice conversion, albeit chosen out of curiosity and for its novelty
 We adapt a modified variational autoencoder as proposed in the paper [One-shot VC with IN](https://arxiv.org/abs/1904.05742). The architecutre has two separate encoders: Speaker encoder for encoding the speaker voice style and Content Encoder for encoding the linguistic content in an audio. A single decoder is used with an Adaptive Instance Normalization layer (AdaIN). AdaIN layer is used to provide gloabl information which got normalized in the Content Encoder with Instance Normalization (IN). It realigns channel mean and variance of content features to style features. Mathematically, AdaIn is equivalent to IN of content input 𝑥 which is then normalized to style input 𝑦. The encoder and decoder arhcitectures are as follows:
 
 
-<img src="https://github.com/AneryPatel/voice-conversion-demo/blob/main/demos/architecture1.jpg" width=50% height=50%> <img src="./demos/encoders.jpg" width=45% height=45%>
 
+![alt text](https://github.com/AneryPatel/voice-conversion-demo/blob/main/demos/architecture1.jpg) ![alt text](./demos/encoders.jpg)
  
-<img src="./demos/decoder.jpg" width=50% height=50%>
+![alt text](./demos/decoder.jpg)
 
 
 ## Training
@@ -28,8 +28,8 @@ approximately 45 thousand epochs.
 ## Visualising Speaker Encoder Latent Space
 
 We extract the embeddings learnt by the speaker encoder, reduce the dimensionality using t-SNE algorithm and visualise the embedding space learnt for different speakers. We notice that some speaker voices are very distinct than the others. We pick a sample audio from a speaker that has a distinct embedding for the subsequent experiments. 
-
-<img src="./demos/latents.jpg" width=50% height=50%>
+ 
+![alt text](./demos/latents.jpg)
 
 ## Initial results and demos
 
@@ -79,7 +79,9 @@ Since normalization layer is the primary reason for style diffusion or injection
 ## Architecture 3: 
 We modify the network to use the Content encoder for both the source and target audios. During forward pass of the target, we save the IN normalisation factors that gets injected in the subsequent decoder stages in place of AdaIN. It works like a mirrored network. Whatever style Content Encoder rejects when processing the target audio is then fed to the decoder for adding style to the output audio.
 
-<img src="./demos/architecture2.jpg" width=50% height=50%>
+ 
+![alt text](./demos/architecture2.jpg)
+
 ## Futurework
 
 1. Use a deeper network and train it for a longer period
