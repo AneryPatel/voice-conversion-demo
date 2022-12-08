@@ -1,16 +1,19 @@
-# voice-conversion-demo
+# One shot conversion with a VAE
 
 ---
 layout: default
 ---
 This is the demo page for the paper [One-shot Voice Conversion by Separating Speaker and Content Representations with Instance Normalization](https://arxiv.org/abs/1904.05742)
-## Abstract
-Recently, voice conversion (VC) without parallel data has been successfully adapted to multi-target scenario in which a single model is trained to convert the input voice to many different speakers. 
-However, such model suffers from the limitation that it can only convert the voice to the speakers in the training data, which narrows down the applicable scenario of VC. 
-In this paper, we proposed a novel one-shot VC approach which is able to perform VC by only an example utterance from source and target speaker respectively, and the source and target speaker do not even need to be seen during training. 
-This is achieved by disentangling speaker and content representations with instance normalization (IN).
-Objective and subjective evaluation shows that our model is able to generate the voice similar to target speaker.
-In addition to the performance measurement, we also demonstrate that this model is able to learn meaningful speaker representations without any supervision. 
+ 
+Voice conversion is the task of altering the voice of a speaker without changing the linguistic content. 
+The typical set-up of this problem defines a source speaker who provides a sample of speech, and a target speaker 
+whose voice will be used to reconstruct the source speaker's speech. A one-shot approach is when the model is only
+supplied with one example of the source speaker, and one example of the target speaker. Neither of the source, nor 
+target speakers need to be represented inside the training dataset. One-shot voice conversion
+represents one of the most useful and challenging tasks in the VC domain: it requires minimal examples from a target 
+speaker and also poses the least constraints on this example's content.
+
+
 - - -
 ### *Male to male(p237->p292)*
 - - -
