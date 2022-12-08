@@ -13,6 +13,20 @@ target speakers need to be represented inside the training dataset. One-shot voi
 represents one of the most useful and challenging tasks in the VC domain: it requires minimal examples from a target 
 speaker and also poses the least constraints on this example's content.
 
+## Training
+
+The Libri dataset is curated for the voice conversion task, including
+speech recordings of 100 hours of speech from English speakers exhibiting various accents. Each speaker within
+the dataset has multiple audio recordings, each labelled with number that identifies the speaker.
+
+We train our model by using the same audio clip for source, target, and desired output.
+
+Training time for our smaller model (with three decoder layers) was as low as 2 hours on a Nvidia T4 GPU, taking 
+approximately 45 thousand epochs.
+
+## Initial results and demos
+
+
 
 - - -
 ### *Male to male(p237->p292)*
