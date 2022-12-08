@@ -38,6 +38,14 @@ Since normalization layer is the primary reason for style diffusion or injection
 We modify the network to use the Content encoder for both the source and target audios. During forward pass of the target, we save the IN normalisation factors that gets injected in the subsequent decoder stages in place of AdaIN. It works like a mirrored network. Whatever style Content Encoder rejects when processing the target audio is then fed to the decoder for adding style to the output audio.
 
 
+## Futurework
+
+1. Use a deeper network and train it for a longer period
+2. Use more diverse training dataset to include speech in different accents
+3. Modify the architecture to have adjustable style combination post-training
+4. Better Decoding using Wavenets and more advanced networks
+
+
 - - -
 ### *Male to male(p237->p292)*
 - - -
