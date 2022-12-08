@@ -8,8 +8,6 @@ The task of voice conversion, albeit chosen out of curiosity and for its novelty
 
 We adapt a modified variational autoencoder as proposed in the paper [One-shot VC with IN](https://arxiv.org/abs/1904.05742). The architecutre has two separate encoders: Speaker encoder for encoding the speaker voice style and Content Encoder for encoding the linguistic content in an audio. A single decoder is used with an Adaptive Instance Normalization layer (AdaIN). AdaIN layer is used to provide gloabl information which got normalized in the Content Encoder with Instance Normalization (IN). It realigns channel mean and variance of content features to style features. Mathematically, AdaIn is equivalent to IN of content input 𝑥 which is then normalized to style input 𝑦. The encoder and decoder arhcitectures are as follows:
 
-
-
 ![alt text](https://github.com/AneryPatel/voice-conversion-demo/blob/main/demos/architecture1.jpg) ![alt text](./demos/encoders.jpg)
  
 ![alt text](./demos/decoder.jpg)
@@ -76,111 +74,24 @@ We notice from the previous demos that the speaker style is not perfectly impose
 ## Architecture 2:
 Since normalization layer is the primary reason for style diffusion or injection into the network, we perform ablation on IN layers in the Content Encoder to test its effectiveness. 
 
+### *Anery to James with IN*
+<audio src="/demos/audio/james_to_anery7_1.wav" controls preload></audio>
+
+### *Anery to James without IN*
+<audio src="/demos/audio/nonorm_a_j.wav" controls preload></audio>
+
+
 ## Architecture 3: 
-We modify the network to use the Content encoder for both the source and target audios. During forward pass of the target, we save the IN normalisation factors that gets injected in the subsequent decoder stages in place of AdaIN. It works like a mirrored network. Whatever style Content Encoder rejects when processing the target audio is then fed to the decoder for adding style to the output audio.
+We modify the network to use the Content encoder for both the source and target audios. During forward pass of the target, we save the IN normalisation factors that gets injected in the subsequent decoder stages in place of AdaIN. It works like a mirrored network, and we choose a design so the dimensionality of each layer in the decoder corresponds to the dimensionality of the corresponding layer in the encoder. Whatever style the Content Encoder removes when processing the target audio (through instance normalisation) is then fed directly to the decoder for adding style to the output audio. In this way, only one encoder is required, and the style parameters don't need to be learned.
 
- 
-![alt text](./demos/architecture2.jpg)
+<img src="./demos/architecture2.jpg" width=50% height=50%>
 
-## Futurework
+The results of this conversion are as follows:
 
-1. Use a deeper network and train it for a longer period
-2. Use more diverse training dataset to include speech in different accents
-3. Modify the architecture to have adjustable style combination post-training
-4. Better Decoding using Wavenets and more advanced networks
+### *Anery to Anery*
+### <audio src="/demos/audio/anery_to_james.wav" controls preload></audio>
 
+Listening to Anery's voice converted to itself, we can hear that our mirror network is performing it's job well! Anery's voice is distinctly recognisable from the conversion. So let's try with a harder example:
 
-- - -
-### *Male to male(p237->p292)*
-- - -
-#### *Source*
-<audio src="res/demo/p237_p292_M_M/p237_018_p292_155_src.wav" controls preload></audio>
-#### *Target*
-<audio src="res/demo/p237_p292_M_M/p237_018_p292_155_tar.wav" controls preload></audio>
-#### *Converted*
-<audio src="res/demo/p237_p292_M_M/p237_018_p292_155_con.wav" controls preload></audio>
-- - -
-#### *Source*
-<audio src="res/demo/p237_p292_M_M/p237_087_p292_162_src.wav" controls preload></audio>
-#### *Target*
-<audio src="res/demo/p237_p292_M_M/p237_087_p292_162_tar.wav" controls preload></audio>
-#### *Converted*
-<audio src="res/demo/p237_p292_M_M/p237_087_p292_162_con.wav" controls preload></audio>
-- - -
-#### *Source*
-<audio src="res/demo/p237_p292_M_M/p237_171_p292_407_src.wav" controls preload></audio>
-#### *Target*
-<audio src="res/demo/p237_p292_M_M/p237_171_p292_407_tar.wav" controls preload></audio>
-#### *Converted*
-<audio src="res/demo/p237_p292_M_M/p237_171_p292_407_con.wav" controls preload></audio>
-- - -
-### *Female to male(p262->p256)*
-- - -
-#### *Source*
-<audio src="res/demo/p262_p256_F_M/p262_027_p256_150_src.wav" controls preload></audio>
-#### *Target*
-<audio src="res/demo/p262_p256_F_M/p262_027_p256_150_tar.wav" controls preload></audio>
-#### *Converted*
-<audio src="res/demo/p262_p256_F_M/p262_027_p256_150_con.wav" controls preload></audio>
-- - -
-#### *Source*
-<audio src="res/demo/p262_p256_F_M/p262_056_p256_116_src.wav" controls preload></audio>
-#### *Target*
-<audio src="res/demo/p262_p256_F_M/p262_056_p256_116_tar.wav" controls preload></audio>
-#### *Converted*
-<audio src="res/demo/p262_p256_F_M/p262_056_p256_116_con.wav" controls preload></audio>
-- - -
-#### *Source*
-<audio src="res/demo/p262_p256_F_M/p262_083_p256_101_src.wav" controls preload></audio>
-#### *Target*
-<audio src="res/demo/p262_p256_F_M/p262_083_p256_101_tar.wav" controls preload></audio>
-#### *Converted*
-<audio src="res/demo/p262_p256_F_M/p262_083_p256_101_con.wav" controls preload></audio>
-- - -
-### *Female to female(p276->p294)*
-- - -
-#### *Source*
-<audio src="res/demo/p276_p294_F_F/p276_064_p294_069_src.wav" controls preload></audio>
-#### *Target*
-<audio src="res/demo/p276_p294_F_F/p276_064_p294_069_tar.wav" controls preload></audio>
-#### *Converted*
-<audio src="res/demo/p276_p294_F_F/p276_064_p294_069_con.wav" controls preload></audio>
-- - -
-#### *Source*
-<audio src="res/demo/p276_p294_F_F/p276_162_p294_250_src.wav" controls preload></audio>
-#### *Target*
-<audio src="res/demo/p276_p294_F_F/p276_162_p294_250_tar.wav" controls preload></audio>
-#### *Converted*
-<audio src="res/demo/p276_p294_F_F/p276_162_p294_250_con.wav" controls preload></audio>
-- - -
-#### *Source*
-<audio src="res/demo/p276_p294_F_F/p276_225_p294_114_src.wav" controls preload></audio>
-#### *Target*
-<audio src="res/demo/p276_p294_F_F/p276_225_p294_114_tar.wav" controls preload></audio>
-#### *Converted*
-<audio src="res/demo/p276_p294_F_F/p276_225_p294_114_con.wav" controls preload></audio>
-- - -
-- - -
-### *Male to female(p278->p310)*
-- - -
-#### *Source*
-<audio src="res/demo/p278_p310_M_F/p278_047_p310_324_src.wav" controls preload></audio>
-#### *Target*
-<audio src="res/demo/p278_p310_M_F/p278_047_p310_324_tar.wav" controls preload></audio>
-#### *Converted*
-<audio src="res/demo/p278_p310_M_F/p278_047_p310_324_con.wav" controls preload></audio>
-- - -
-#### *Source*
-<audio src="res/demo/p278_p310_M_F/p278_053_p310_141_src.wav" controls preload></audio>
-#### *Target*
-<audio src="res/demo/p278_p310_M_F/p278_053_p310_141_tar.wav" controls preload></audio>
-#### *Converted*
-<audio src="res/demo/p278_p310_M_F/p278_053_p310_141_con.wav" controls preload></audio>
-- - -
-#### *Source*
-<audio src="res/demo/p278_p310_M_F/p278_101_p310_343_src.wav" controls preload></audio>
-#### *Target*
-<audio src="res/demo/p278_p310_M_F/p278_101_p310_343_tar.wav" controls preload></audio>
-#### *Converted*
-<audio src="res/demo/p278_p310_M_F/p278_101_p310_343_con.wav" controls preload></audio>
-- - -
+### *Anery to James*
+### <audio src="/demos/decoders/james_to_anery7_1.wav" controls preload></audio>
