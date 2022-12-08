@@ -96,3 +96,11 @@ Listening to Anery's voice converted to itself, we can hear that our mirror netw
 
 ### *Anery to James*
 ### <audio src="/demos/decoders/james_to_anery7_1.wav" controls preload></audio>
+
+## Futurework
+
+1. Use a deeper network and train it for a longer period
+2. Use more diverse training dataset to include speech in different accents
+3. Modify the architecture to have adjustable style combination post-training
+4. Better Decoding using Wavenets and more advanced networks
+
