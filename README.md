@@ -67,12 +67,14 @@ And one more fun example
 ## Architecture 1: 
 We notice from the previous demos that the speaker style is not perfectly imposed on the content embeddings from the Content Encoder. In order to boost style element in the output, we experiment with a deeper Decoder network so as to incorporate more AdaIn layers, the primary point of style injection in the network. We test this hypothesis with two networks: a Decoder with 5 layers and a Decoder with 7 layers
 
-<demo>
+### *5 layer decoder*
+<audio src="/demos/decoders/james_to_anery5_1.wav" controls preload></audio>
+
+### *7 layer decoder*
+<audio src="/demos/decoders/james_to_anery7_1.wav" controls preload></audio>
 
 ## Architecture 2:
 Since normalization layer is the primary reason for style diffusion or injection into the network, we perform ablation on IN layers in the Content Encoder to test its effectiveness. 
-
-<demo>
 
 ## Architecture 3: 
 We modify the network to use the Content encoder for both the source and target audios. During forward pass of the target, we save the IN normalisation factors that gets injected in the subsequent decoder stages in place of AdaIN. It works like a mirrored network. Whatever style Content Encoder rejects when processing the target audio is then fed to the decoder for adding style to the output audio.
