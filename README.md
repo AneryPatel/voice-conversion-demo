@@ -1,4 +1,8 @@
-# One shot conversion with a VAE
+# One-shot Voice conversion with a Variational Autoencoder
+## Anery Patel, James Wilkinson
+### [contact Anery](mailto:anerypatel28@gmail.com) &emsp;        [contact James](mailto:jimmywilkinson15@gmail.com)
+## CS 496: Generative Deep Models, Prof. Bryan Pardo, Northwestern University
+
 
 Voice conversion is the task of altering the voice of a speaker without changing the linguistic content. The typical set-up of this problem defines a source speaker who provides a sample of speech, and a target speaker whose voice will be used to reconstruct the source speaker's speech. A one-shot approach is when the model is only supplied with one example of the source speaker, and one example of the target speaker. Neither of the source, nor  target speakers need to be represented inside the training dataset. One-shot voice conversion represents one of the most useful and challenging tasks in the VC domain: it requires minimal examples from a target speaker and also poses the least constraints on this example's content.
 
