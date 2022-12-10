@@ -51,7 +51,7 @@ And the results, converting between the two of us, are as follows:
 ### *James to Anery*
 <audio src="./demos/base/james_to_anery.wav" controls preload></audio>
 ### *Anery to James*
-<audio src="./demos/base/anery_to_james1.wav" controls preload></audio>
+<audio src="./demos/base/anery_to_james2.wav" controls preload></audio>
 ### *James to James*
 <audio src="./demos/base/james_to_james.wav" controls preload></audio>
 
@@ -71,10 +71,10 @@ And one more fun example
 We notice from the previous demos that the speaker style is not perfectly imposed on the content embeddings from the Content Encoder. In order to boost style element in the output, we experiment with a deeper Decoder network so as to incorporate more AdaIn layers, the primary point of style injection in the network. We test this hypothesis with two networks: a Decoder with 5 layers and a Decoder with 7 layers
 
 ### *5 layer decoder*
-<audio src="./demos/decoders/james_to_anery5_1.wav" controls preload></audio>
+<audio src="./demos/decoders/james_to_anery5_2.wav" controls preload></audio>
 
 ### *7 layer decoder*
-<audio src="./demos/decoders/james_to_anery7_1.wav" controls preload></audio>
+<audio src="./demos/decoders/james_to_anery7_2.wav" controls preload></audio>
 
 ## Architecture 2:
 Since normalization layer is the primary reason for style diffusion or injection into the network, we perform ablation on IN layers in the Content Encoder to test its effectiveness. 
@@ -94,7 +94,7 @@ We modify the network to use the Content encoder for both the source and target 
 The results of this conversion are as follows:
 
 ### *Anery to James*
-### <audio src="./demos/decoders/james_to_anery7_1.wav" controls preload></audio>
+### <audio src="./demos/decoders/james_to_anery7_2.wav" controls preload></audio>
 
 Overall, this new architecture that we have proposed is functioning similarly to the base architecture that we have used. The performance is not quite as strong, however, we'd love to progress and to train a larger architecture to see how its performance improves with network size.
 
