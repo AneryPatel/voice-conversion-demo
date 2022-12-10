@@ -80,7 +80,7 @@ We notice from the previous demos that the speaker style is not perfectly impose
 Since normalization layer is the primary reason for style diffusion or injection into the network, we perform ablation on IN layers in the Content Encoder to test its effectiveness. 
 
 ### *Anery to James with IN*
-<audio src="./demos/audio/james_to_anery7_1.wav" controls preload></audio>
+<audio src="./demos/base/james_to_anery1.wav" controls preload></audio>
 
 ### *Anery to James without IN*
 <audio src="./demos/audio/nonorm_a_j.wav" controls preload></audio>
@@ -92,11 +92,6 @@ We modify the network to use the Content encoder for both the source and target 
 <img src="./demos/architecture2.jpg" width=50% height=50%>
 
 The results of this conversion are as follows:
-
-### *Anery to Anery*
-### <audio src="./demos/audio/anery_to_james.wav" controls preload></audio>
-
-Listening to Anery's voice converted to itself, we can hear that our mirror network is performing it's job well! Anery's voice is distinctly recognisable from the conversion. So let's try with a harder example:
 
 ### *Anery to James*
 ### <audio src="./demos/decoders/james_to_anery7_1.wav" controls preload></audio>
