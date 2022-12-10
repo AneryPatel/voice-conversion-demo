@@ -42,18 +42,18 @@ First, let's look at converting some audio clips that come from the authors of t
 are two audio clips that we can use.
 
 ### *Anery*
-<audio src="/demos/audio/anery_long.wav" controls preload></audio>
+<audio src="./demos/audio/anery_long.wav" controls preload></audio>
 ### *James*
-<audio src="/demos/audio/james.wav" controls preload></audio>
+<audio src="./demos/audio/james.wav" controls preload></audio>
 
 And the results, converting between the two of us, are as follows:
 
 ### *James to Anery*
-<audio src="/demos/base/james_to_anery.wav" controls preload></audio>
+<audio src="./demos/base/james_to_anery.wav" controls preload></audio>
 ### *Anery to James*
-<audio src="/demos/base/anery_to_james1.wav" controls preload></audio>
+<audio src="./demos/base/anery_to_james1.wav" controls preload></audio>
 ### *James to James*
-<audio src="/demos/base/james_to_james.wav" controls preload></audio>
+<audio src="./demos/base/james_to_james.wav" controls preload></audio>
 
 Overall these conversions are a great start. But there is room for improvement. Searching for an example that will
 exemplify the best of the model, we search for a target speaker inside the training data. To do this, we look back at
@@ -61,29 +61,29 @@ the latent space of the speaker encoder, in the previous figure. We take an audi
 our t-SNE analysis showed could have a nicely distinct location in the speaker encoder's latent space. 
 
 ### *Anery to Speaker 5163*
-<audio src="/demos/base/anery_to_5163.wav" controls preload></audio>
+<audio src="./demos/base/anery_to_5163.wav" controls preload></audio>
 
 And one more fun example
 ### *James to Tuba*
-<audio src="/demos/base/james_to_tuba.wav" controls preload></audio>
+<audio src="./demos/base/james_to_tuba.wav" controls preload></audio>
 
 ## Architecture 1: 
 We notice from the previous demos that the speaker style is not perfectly imposed on the content embeddings from the Content Encoder. In order to boost style element in the output, we experiment with a deeper Decoder network so as to incorporate more AdaIn layers, the primary point of style injection in the network. We test this hypothesis with two networks: a Decoder with 5 layers and a Decoder with 7 layers
 
 ### *5 layer decoder*
-<audio src="/demos/decoders/james_to_anery5_1.wav" controls preload></audio>
+<audio src="./demos/decoders/james_to_anery5_1.wav" controls preload></audio>
 
 ### *7 layer decoder*
-<audio src="/demos/decoders/james_to_anery7_1.wav" controls preload></audio>
+<audio src="./demos/decoders/james_to_anery7_1.wav" controls preload></audio>
 
 ## Architecture 2:
 Since normalization layer is the primary reason for style diffusion or injection into the network, we perform ablation on IN layers in the Content Encoder to test its effectiveness. 
 
 ### *Anery to James with IN*
-<audio src="/demos/audio/james_to_anery7_1.wav" controls preload></audio>
+<audio src="./demos/audio/james_to_anery7_1.wav" controls preload></audio>
 
 ### *Anery to James without IN*
-<audio src="/demos/audio/nonorm_a_j.wav" controls preload></audio>
+<audio src="./demos/audio/nonorm_a_j.wav" controls preload></audio>
 
 
 ## Architecture 3: 
@@ -94,12 +94,12 @@ We modify the network to use the Content encoder for both the source and target 
 The results of this conversion are as follows:
 
 ### *Anery to Anery*
-### <audio src="/demos/audio/anery_to_james.wav" controls preload></audio>
+### <audio src="./demos/audio/anery_to_james.wav" controls preload></audio>
 
 Listening to Anery's voice converted to itself, we can hear that our mirror network is performing it's job well! Anery's voice is distinctly recognisable from the conversion. So let's try with a harder example:
 
 ### *Anery to James*
-### <audio src="/demos/decoders/james_to_anery7_1.wav" controls preload></audio>
+### <audio src="./demos/decoders/james_to_anery7_1.wav" controls preload></audio>
 
 Overall, this new architecture that we have proposed is functioning similarly to the base architecture that we have used. The performance is not quite as strong, however, we'd love to progress and to train a larger architecture to see how its performance improves with network size.
 
