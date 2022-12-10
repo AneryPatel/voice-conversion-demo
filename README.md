@@ -94,7 +94,7 @@ We modify the network to use the Content encoder for both the source and target 
 The results of this conversion are as follows:
 
 ### *Anery to James*
-### <audio src="./demos/decoders/james_to_anery7_2.wav" controls preload></audio>
+### <audio src="./demos/base/anery_to_james.wav" controls preload></audio>
 
 Overall, this new architecture that we have proposed is functioning similarly to the base architecture that we have used. The performance is not quite as strong, however, we'd love to progress and to train a larger architecture to see how its performance improves with network size.
 
