@@ -89,7 +89,7 @@ Since normalization layer is the primary reason for style diffusion or injection
 ## Architecture 3: 
 We modify the network to use the Content encoder for both the source and target audios. During forward pass of the target, we save the IN normalisation factors that gets injected in the subsequent decoder stages in place of AdaIN. It works like a mirrored network, and we choose a design so the dimensionality of each layer in the decoder corresponds to the dimensionality of the corresponding layer in the encoder. Whatever style the Content Encoder removes when processing the target audio (through instance normalisation) is then fed directly to the decoder for adding style to the output audio. In this way, only one encoder is required, and the style parameters don't need to be learned.
 
-<img src="./demos/architecture2.jpg" width=50% height=50%>
+![alt text](./demos/architecture2.jpg)
 
 The results of this conversion are as follows:
 
